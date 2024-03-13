@@ -21,6 +21,7 @@
 #ifndef CHECKM8_H
 #define CHECKM8_H
 
+#include <libirecovery.h>
 #include <stdint.h>
 
 int checkm8_32_exploit(irecv_client_t client, irecv_device_t device, const struct irecv_device_info *devinfo);

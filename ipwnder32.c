@@ -26,7 +26,6 @@
 #include <sys/types.h>
 #include <dirent.h>
 
-#include <ircv.h>
 #include <checkm8.h>
 #include <limera1n.h>
 #include <partial.h>

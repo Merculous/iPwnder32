@@ -23,7 +23,7 @@
 #include <string.h>
 #include <stdio.h>
 
-#include <ircv.h>
+#include <libirecovery.h>
 #include <checkm8.h>
 
 
@@ -39,6 +39,8 @@ static int empty(void){
 
 
 // usb
+
+/*
 struct irecv_client_private {
     int debug;
     int usb_config;
@@ -55,7 +57,7 @@ struct irecv_client_private {
     irecv_event_cb_t postcommand_callback;
     irecv_event_cb_t disconnected_callback;
 };
-
+*/
 
 unsigned char blank_buf[0x800];
 
@@ -158,7 +160,7 @@ static int state32(irecv_client_t client, uint16_t cpid, checkm8_32_t config){
     int sent;
     int newVal;
     int maxVal;
-    
+        
     a = 0; // retry
     maxVal = config.overwrite_offset;
     
@@ -227,7 +229,7 @@ static int state64(irecv_client_t client, uint16_t cpid, checkm8_32_t config){
     }
     
     newVal = config.overwrite_offset;
-    
+        
     if(sent == 0x00) newVal += 0x40;
     if(sent == 0x40) newVal += 0;
     if(sent == 0x80) newVal -= 0x40;
@@ -242,7 +244,7 @@ static int state64(irecv_client_t client, uint16_t cpid, checkm8_32_t config){
     }
     
     usleep(100);
-    
+
     // heap spray
     if(heap(client, cpid, config) != 0) {
         printf("\x1b[31mERROR: Failed to heap spray.\x1b[39m\n");
@@ -254,7 +256,7 @@ static int state64(irecv_client_t client, uint16_t cpid, checkm8_32_t config){
     usleep(100);
     
     // ReEnumerate
-    (*client->handle)->USBDeviceReEnumerate(client->handle, 0);
+    // (*client->handle)->USBDeviceReEnumerate(client->handle, 0);
     //irecv_reset(client); // Is it better to reset?
     
     return 0;
@@ -303,7 +305,7 @@ int checkm8_32_exploit(irecv_client_t client, irecv_device_t device_info, const 
     }
 
     if(cpid == 0x8960){
-        // A7
+            // A7
         r = state64(client, cpid, config);
     } else {
         // A6
@@ -323,7 +325,7 @@ int checkm8_32_exploit(irecv_client_t client, irecv_device_t device_info, const 
             irecv_close(client);
             return -1;
         }
-        
+
         r = state32(client, cpid, config);
     }
     

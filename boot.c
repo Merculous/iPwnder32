@@ -23,7 +23,7 @@
 #include <string.h>
 #include <stdio.h>
 
-#include <ircv.h>
+#include <libirecovery.h>
 
 static int send_data(irecv_client_t client, unsigned char* data, size_t size){
     return irecv_usb_control_transfer(client, 0x21, 1, 0, 0, data, size, 100);

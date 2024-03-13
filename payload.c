@@ -18,11 +18,12 @@
  *
  */
 
+#define _GNU_SOURCE
+
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <ircv.h>
 #include <checkm8.h>
 
 #include <limera1n_p.h>

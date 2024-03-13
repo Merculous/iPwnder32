@@ -23,7 +23,7 @@
 #include <string.h>
 #include <stdio.h>
 
-#include <ircv.h>
+#include <libirecovery.h>
 #include <limera1n.h>
 
 static int empty(void){
