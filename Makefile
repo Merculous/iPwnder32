@@ -1,7 +1,7 @@
 CC=gcc
 CPPFLAGS=-I.
-CFLAGS=-g -Wall
-LDFLAGS=-L/usr/local/lib -lusb-1.0 -lcrypto
+CFLAGS=-Wall -DDEBUG -g
+LDFLAGS=-lusb-1.0 -lcrypto
 NAME=ipwnder32
 
 .SILENT: $NAME
