@@ -1,11 +1,13 @@
 CC=gcc
-CFLAGS=-lusb-1.0 -lcrypto -I. 
+CPPFLAGS=-I.
+CFLAGS=-g -Wall
+LDFLAGS=-L/usr/local/lib -lusb-1.0 -lcrypto
+NAME=ipwnder32
 
-.SILENT: pwnedDFU
+.SILENT: $NAME
 
-pwnedDFU: exploit.o usb.o payload_gen.o
-	$(CC) *.o $(CFLAGS) -o pwnedDFU
+$NAME: exploit.o usb.o payload_gen.o
+	$(CC) $(CPPFLAGS) $(CFLAGS) *.o $(LDFLAGS) -o $(NAME)
 
 clean:
-	rm -f *.o pwnedDFU
-
+	rm -f *.o $(NAME)
