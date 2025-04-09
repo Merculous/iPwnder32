@@ -1,7 +1,7 @@
 CC=gcc
 CPPFLAGS=-I.
 CFLAGS=-Wall -DDEBUG -g
-LDFLAGS=-lusb-1.0 -lcrypto
+LDFLAGS=-lusb-1.0 -lcrypto -lpthread
 NAME=ipwnder32
 
 .SILENT: $NAME
