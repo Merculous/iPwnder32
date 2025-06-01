@@ -50,6 +50,23 @@ unsigned char trampoline64[] = {
     0x73, 0x61, 0x69, 0x63  // - 16
 };
 
+void *memmem(const void *haystack, size_t haystack_len, const void * const needle, const size_t needle_len)
+{
+    if (haystack == NULL) return NULL; // or assert(haystack != NULL);
+    if (haystack_len == 0) return NULL;
+    if (needle == NULL) return NULL; // or assert(needle != NULL);
+    if (needle_len == 0) return NULL;
+    
+    for (const char *h = haystack;
+            haystack_len >= needle_len;
+            ++h, --haystack_len) {
+        if (!memcmp(h, needle, needle_len)) {
+            return h;
+        }
+    }
+    return NULL;
+}
+
 // based on synackuk's belladonna
 // https://github.com/synackuk/belladonna/blob/824363bbc287da3cd2d97cba69aa746db89a86b6/src/exploits/checkm8/payload_gen.c
 

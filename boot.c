@@ -18,6 +18,8 @@
  *
  */
 
+#define bzero(p, n) memset((p), 0, (n))
+
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
