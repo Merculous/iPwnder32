@@ -1,3 +1,5 @@
 *.o
 .DS_Store
 pwnedDFU
+.debug_payload.bin
+ipwnder32*
